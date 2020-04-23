@@ -1,0 +1,25 @@
+<form #frm="ngForm">
+  <div class="form-group">
+      <label for="select"><b><h3>City</h3></b></label>
+    <select name="city1" #city1="ngModel" [(ngModel)]="citySelected" class="form-control" (change)="updateSpotList($event.target,frm)" style="margin-left:20px; width: 310px;" class="form-control">
+            <option *ngFor="let city of cityList" value="{{city}}">{{city}}</option>
+          </select>
+  </div>
+  <table id="customers" class="table table-hover table-fixed" style="margin-top:25px">
+    <thead style="color:rgb(31, 115, 226); ">
+        <tr>
+          <th style="width: 10px; font-size: 20px;">ID</th>
+          <th style="width: 180px; text-align: center; font-size: 20px;padding-left:35px">Parking Spot</th>
+          <th style="width:150px; font-size: 20px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let parkingspot of itemList;let i=index">
+          <td style="min-width: 10px; padding-top:40px; padding-left:15px;" >{{i+1}}</td>
+          <td style="min-width: 231px; font-size: 20px; padding-top:25px">{{parkingspot.name}}<br>
+            <p style="font-size:15px">{{parkingspot.address}}</p></td>
+          <td style="padding-right:0px"><button type="button" routerLink="/Book" style="border-radius: 15px;outline: none;border: none;cursor: pointer;padding-top: 2px; height:35px; font-size: 20px; margin-top:20px;background-color:rgb(43, 131, 202);color: whitesmoke">View</button></td>
+        </tr>
+    </tbody>
+  </table>
+</form>
